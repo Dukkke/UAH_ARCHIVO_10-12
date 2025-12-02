@@ -3,595 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archivo Patrimonial - Universidad Alberto Hurtado</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Chatbot Archivo Patrimonial UAH</title>
     <style>
-        /* Estilos basados en el sitio real UAH */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
         
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f8f9fa;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
-
-        .header {
-            background: #2c3e50;
-            color: white;
-            padding: 1rem 0;
-            border-bottom: 4px solid #3498db;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .logo span {
-            color: #3498db;
-        }
-
-        .nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav a:hover {
-            color: #3498db;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #34495e, #2c3e50);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-
+        
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .search-section {
             background: white;
-            padding: 2rem;
+            padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-
-        .search-box {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 12px;
-            border: 2px solid #e9ecef;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-
-        .search-box button {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .search-options {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .search-option {
-            background: #f8f9fa;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .search-option:hover {
-            background: #e9ecef;
-        }
-
-        .fondos-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-
-        .section-title {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .fondos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .fondo-card {
-            background: #f8f9fa;
-            border-left: 4px solid #3498db;
-            padding: 1.5rem;
-            border-radius: 0 6px 6px 0;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .fondo-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .fondo-card h3 {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .fondo-card p {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        .stats-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
+        
+        h1 {
+            color: #007cba;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #3498db;
-            display: block;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        /* Chatbot Widget */
-        .chatbot-widget {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            padding: 16px 24px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-            z-index: 1000;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .chatbot-widget:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
-        }
-
-        .chatbot-icon {
-            font-size: 1.2rem;
-        }
-
-        /* Modal del Chatbot */
-        .chatbot-modal {
+        
+        p { line-height: 1.6; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        
+        /* Chatbot styles */
+        #chatbot-container {
             display: none;
             position: fixed;
-            bottom: 90px;
-            right: 25px;
+            bottom: 20px;
+            right: 20px;
             width: 350px;
+            height: 500px;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            z-index: 1001;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 10000;
+            font-family: Arial, sans-serif;
         }
-
-        .chatbot-header {
-            background: #2c3e50;
+        
+        #chatbot-header {
+            background: #007cba;
             color: white;
-            padding: 1rem;
-            border-radius: 12px 12px 0 0;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            cursor: move;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        .chatbot-messages {
-            height: 300px;
-            padding: 1rem;
+        
+        #chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0;
+            width: 25px;
+            height: 25px;
+        }
+        
+        #chatbot-messages {
+            height: 400px;
             overflow-y: auto;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .chatbot-input {
-            padding: 1rem;
+            padding: 10px;
+            background: #f9f9f9;
             display: flex;
-            gap: 0.5rem;
+            flex-direction: column;
         }
-
-        .chatbot-input input {
+        
+        #chatbot-input {
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            display: flex;
+            gap: 5px;
+        }
+        
+        #chatbot-user-input {
             flex: 1;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
         }
-
-        .chatbot-input button {
-            background: #3498db;
+        
+        #chatbot-send {
+            padding: 8px 15px;
+            background: #007cba;
             color: white;
             border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
+            border-radius: 3px;
             cursor: pointer;
+            font-size: 14px;
+        }
+        
+        #chatbot-send:hover {
+            background: #005a8c;
+        }
+        
+        #chatbot-send:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        #chatbot-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #007cba;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        
+        #chatbot-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .message {
+            margin: 8px 0;
+            padding: 10px 12px;
+            border-radius: 8px;
+            max-width: 85%;
+            word-wrap: break-word;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .user-message {
+            background: #007cba;
+            color: white;
+            align-self: flex-end;
+            text-align: right;
+        }
+        
+        .bot-message {
+            background: white;
+            color: #333;
+            border: 1px solid #ddd;
+            align-self: flex-start;
+        }
+        
+        .bot-message a {
+            color: #007cba;
+            text-decoration: underline;
+        }
+        
+        .loading {
+            color: #666;
+            font-style: italic;
+            align-self: flex-start;
+        }
+        
+        .error-message {
+            background: #ffe6e6;
+            color: #cc0000;
+            border: 1px solid #ff9999;
+            padding: 10px;
+            border-radius: 5px;
+            align-self: flex-start;
+        }
+        
+        .welcome-message {
+            text-align: center;
+            color: #666;
+            margin: auto;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                Archivo <span>Patrimonial</span>
-            </div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#fondos">Fondos</a></li>
-                    <li><a href="#buscar">Búsqueda</a></li>
-                    <li><a href="#acerca">Acerca de</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <h1>Archivo Patrimonial UAH</h1>
-        <p>Acceso libre a documentos históricos y patrimonio cultural de Chile</p>
-    </section>
-
-    <!-- Main Content -->
     <div class="container">
-        <!-- Estadísticas -->
-        <div class="stats-section">
-            <div class="stat-card">
-                <span class="stat-number" id="totalFondos">5</span>
-                <span class="stat-label">Fondos Documentales</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number" id="totalDocumentos">0</span>
-                <span class="stat-label">Documentos</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number" id="totalFotos">0</span>
-                <span class="stat-label">Fotografías</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">1970-2020</span>
-                <span class="stat-label">Período Cubierto</span>
-            </div>
-        </div>
-
-        <!-- Búsqueda -->
-        <section class="search-section" id="buscar">
-            <h2 class="section-title">Búsqueda en el Archivo</h2>
-            <div class="search-box">
-                <input type="text" id="globalSearch" placeholder="Buscar documentos, fotografías, archivos...">
-                <button onclick="performSearch()">Buscar</button>
-            </div>
-            <div class="search-options">
-                <div class="search-option" onclick="searchByCategory('fotografias')">📸 Fotografías</div>
-                <div class="search-option" onclick="searchByCategory('documentos')">📄 Documentos</div>
-                <div class="search-option" onclick="searchByCategory('volantes')">🗞️ Volantes</div>
-                <div class="search-option" onclick="searchByCategory('musica')">🎵 Música</div>
-            </div>
-        </section>
-
-        <!-- Fondos Documentales -->
-        <section class="fondos-section" id="fondos">
-            <h2 class="section-title">Fondos Documentales</h2>
-            <div class="fondos-grid" id="fondosGrid">
-                <!-- Los fondos se cargarán dinámicamente -->
-            </div>
-        </section>
+        <h1>Archivo Patrimonial Universidad Alberto Hurtado</h1>
+        <p>La plataforma Archivo Patrimonial pone a disposición del público en libre acceso, una selección de documentos con el objeto de acercar a los ciudadanos al patrimonio cultural y la memoria colectiva de nuestro país.</p>
+        <p>A través de este portal, usted puede encontrar los siguientes fondos documentales:</p>
+        <ul>
+            <li><strong>Patricio Aylwin Azócar (1990-1994)</strong> - Documentos del primer presidente de la Concertación</li>
+            <li><strong>Fotografías del Programa Padres e Hijos (1974-1976)</strong> - Imágenes del programa social durante la dictadura</li>
+            <li><strong>Volantes Políticos (1973-1990)</strong> - Material de propaganda política de la época</li>
+            <li><strong>Iglesias y Dictadura (1973-1990)</strong> - Documentos sobre el rol de la iglesia durante el régimen militar</li>
+            <li><strong>Música Docta chilena</strong> - Colección de partituras y documentos musicales</li>
+        </ul>
+        <p>Haz clic en el ícono del chatbot para hacer preguntas sobre el archivo.</p>
     </div>
 
-    <!-- Chatbot Widget -->
-    <div class="chatbot-widget" onclick="toggleChatbot()">
-        <span class="chatbot-icon">🤖</span>
-        <span>Asistente IA</span>
-    </div>
-
-    <!-- Chatbot Modal -->
-    <div class="chatbot-modal" id="chatbotModal">
-        <div class="chatbot-header">
-            <span>Asistente del Archivo Patrimonial</span>
-            <button onclick="toggleChatbot()" style="background: none; border: none; color: white; cursor: pointer;">✕</button>
+    <!-- Chatbot -->
+    <div id="chatbot-container">
+        <div id="chatbot-header">
+            <span>🤖 Chatbot Archivo UAH</span>
+            <button id="chatbot-close">×</button>
         </div>
-        <div class="chatbot-messages" id="chatbotMessages">
-            <div style="margin-bottom: 0.5rem; background: #f5f5f5; padding: 0.5rem; border-radius: 10px;">
-                <strong>Asistente:</strong> ¡Hola! Soy tu asistente IA. ¿En qué puedo ayudarte a buscar en el archivo?
+        <div id="chatbot-messages">
+            <div class="welcome-message">
+                ¡Hola! Soy el chatbot del Archivo Patrimonial UAH.<br><br>
+                ¿En qué puedo ayudarte?
             </div>
         </div>
-        <div class="chatbot-input">
-            <input type="text" id="chatbotInput" placeholder="Escribe tu pregunta...">
-            <button onclick="sendMessage()">Enviar</button>
+        <div id="chatbot-input">
+            <input type="text" id="chatbot-user-input" placeholder="Escribe tu pregunta...">
+            <button id="chatbot-send">Enviar</button>
         </div>
     </div>
+
+    <div id="chatbot-icon">
+        <span style="color: white; font-size: 24px;">🤖</span>
+    </div>
+
+    <!-- SCRIPT COMPLETO PARA index.html -->
+    <!-- Reemplaza el bloque <script> existente con este código mejorado -->
 
     <script>
-        // Datos reales del archivo patrimonial
-        let fondosData = [];
+console.log('🚀 Chatbot script iniciado');
 
-        // Cargar datos al iniciar
-        fetch('/api/fondos.json')
-            .then(response => response.json())
-            .then(data => {
-                fondosData = data;
-                updateStats();
-                renderFondos();
+document.addEventListener('DOMContentLoaded', function()
+
+ {
+    console.log('✅ DOM cargado completamente');
+    
+    const chatbotIcon = document.getElementById('chatbot-icon');
+    const chatbotContainer = document.getElementById('chatbot-container');
+    const chatbotClose = document.getElementById('chatbot-close');
+    const chatbotSend = document.getElementById('chatbot-send');
+    const chatbotInput = document.getElementById('chatbot-user-input');
+    const chatbotMessages = document.getElementById('chatbot-messages');
+
+    // Toggle chatbot visibility
+    chatbotIcon.addEventListener('click', function() {
+        console.log('👆 Click en icono chatbot');
+        const isVisible = chatbotContainer.style.display === 'block';
+        chatbotContainer.style.display = isVisible ? 'none' : 'block';
+        chatbotIcon.style.display = isVisible ? 'flex' : 'none';
+    });
+
+    // Close chatbot
+    chatbotClose.addEventListener('click', function() {
+        console.log('❌ Cerrando chatbot');
+        chatbotContainer.style.display = 'none';
+        chatbotIcon.style.display = 'flex';
+    });
+
+    // Send message function
+    function sendMessage() {
+        const message = chatbotInput.value.trim();
+        
+        if (!message) {
+            console.warn('⚠️ Mensaje vacío, no se envía');
+            return;
+        }
+
+        console.log('📤 Enviando mensaje:', message);
+
+        // Add user message
+        addMessage(message, 'user');
+        chatbotInput.value = '';
+
+        // Disable controls while processing
+        chatbotSend.disabled = true;
+        chatbotInput.disabled = true;
+
+        // Show loading indicator
+        const loadingMsg = addMessage('Procesando tu consulta...', 'loading');
+
+        // Usar http://localhost/api/chat (nginx proxy en puerto 80)
+        const apiUrl = '/api/chat';
+        console.log('🌐 Enviando POST a:', apiUrl);
+
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ 
+                query: message 
             })
-            .catch(error => {
-                console.error('Error cargando datos:', error);
-                // Datos de respaldo
-                fondosData = [
-                    {
-                        "id": "ayivan-azucar",
-                        "titulo": "Partido Ayiván Azúcar (1996-1998)",
-                        "descripcion": "Documentos, fotografías y videos materiales digitalizados del período presidencial.",
-                        "documentos": 1250,
-                        "fotos": 340,
-                        "periodo": "1996-1998"
-                    },
-                    {
-                        "id": "juan-malino", 
-                        "titulo": "Fotografías de Programa Padres e Hijos",
-                        "descripcion": "Colección de fotografías tomadas por Juan Malino (1974-1976).",
-                        "documentos": 45,
-                        "fotos": 2150,
-                        "periodo": "1974-1976"
-                    },
-                    {
-                        "id": "volantes",
-                        "titulo": "Volantes Políticos",
-                        "descripcion": "Colección de panfletos políticos que abarcan los años 1973-1990.",
-                        "documentos": 890,
-                        "fotos": 120,
-                        "periodo": "1973-1990"
-                    },
-                    {
-                        "id": "iglesias-dictadura",
-                        "titulo": "Iglesias y Dictadura",
-                        "descripcion": "Documentos sobre la participación de las iglesias durante la dictadura militar chilena (1973-1990).",
-                        "documentos": 670,
-                        "fotos": 85,
-                        "periodo": "1973-1990"
-                    },
-                    {
-                        "id": "musica-docta",
-                        "titulo": "Música Docta Chilena", 
-                        "descripcion": "Partituras, fotografías, programas de conciertos y grabaciones sonoras relevantes para el estudio de la historia musical chilena.",
-                        "documentos": 320,
-                        "fotos": 560,
-                        "periodo": "1900-2000"
-                    }
-                ];
-                updateStats();
-                renderFondos();
-            });
-
-        function updateStats() {
-            const totalDocs = fondosData.reduce((sum, fondo) => sum + fondo.documentos, 0);
-            const totalFotos = fondosData.reduce((sum, fondo) => sum + fondo.fotos, 0);
+        })
+        .then(response => {
+            console.log('📨 Response status:', response.status);
             
-            document.getElementById('totalDocumentos').textContent = totalDocs.toLocaleString();
-            document.getElementById('totalFotos').textContent = totalFotos.toLocaleString();
-            document.getElementById('totalFondos').textContent = fondosData.length;
-        }
-
-        function renderFondos() {
-            const fondosGrid = document.getElementById('fondosGrid');
-            fondosGrid.innerHTML = fondosData.map(fondo => `
-                <div class="fondo-card" onclick="openFondo('${fondo.id}')">
-                    <h3>${fondo.titulo}</h3>
-                    <p>${fondo.descripcion}</p>
-                    <div style="margin-top: 0.5rem; font-size: 0.8rem; color: #666;">
-                        <span>📄 ${fondo.documentos} documentos</span> • 
-                        <span>📸 ${fondo.fotos} fotos</span> • 
-                        <span>📅 ${fondo.periodo}</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Funciones de búsqueda
-        function performSearch() {
-            const query = document.getElementById('globalSearch').value.toLowerCase();
-            if (query) {
-                const resultados = fondosData.filter(fondo => 
-                    fondo.titulo.toLowerCase().includes(query) || 
-                    fondo.descripcion.toLowerCase().includes(query)
-                );
-                
-                if (resultados.length > 0) {
-                    let mensaje = `🔍 Encontré ${resultados.length} resultado(s) para "${query}":\n\n`;
-                    resultados.forEach(fondo => {
-                        mensaje += `• ${fondo.titulo}\n`;
-                    });
-                    mensaje += "\nHaz clic en cualquier fondo para ver más detalles.";
-                    alert(mensaje);
-                } else {
-                    alert(`❌ No se encontraron resultados para "${query}"`);
-                }
-            }
-        }
-
-        function searchByCategory(category) {
-            const categories = {
-                'fotografias': '📸 Búsqueda en fotografías históricas',
-                'documentos': '📄 Búsqueda en documentos',
-                'volantes': '🗞️ Búsqueda en volantes políticos', 
-                'musica': '🎵 Búsqueda en música docta'
-            };
-            alert(categories[category] + '\n\nPróximamente conectado a AtoM');
-        }
-
-        // Abrir fondo con datos reales - Ahora redirige a página específica
-        function openFondo(fondoId) {
-            window.location.href = `/fondos/${fondoId}.html`;
-        }
-
-        // Funciones del Chatbot
-        function toggleChatbot() {
-            const modal = document.getElementById('chatbotModal');
-            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chatbotInput');
-            const messages = document.getElementById('chatbotMessages');
-            const message = input.value.trim();
-
-            if (message) {
-                // Agregar mensaje del usuario
-                messages.innerHTML += `<div style="text-align: right; margin-bottom: 0.5rem; background: #e3f2fd; padding: 0.5rem; border-radius: 10px;"><strong>Tú:</strong> ${message}</div>`;
-
-                // Mostrar indicador de escritura
-                const typingIndicator = document.createElement('div');
-                typingIndicator.id = 'typingIndicator';
-                typingIndicator.innerHTML = '<div style="margin-bottom: 0.5rem; background: #f5f5f5; padding: 0.5rem; border-radius: 10px;"><strong>Asistente:</strong> <em>Escribiendo...</em></div>';
-                messages.appendChild(typingIndicator);
-                messages.scrollTop = messages.scrollHeight;
-
-                // Enviar a la API
-                fetch('http://localhost:5000/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({message: message})
-                })
-                .then(response => {
-                    console.log('Response status:', response.status);
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok: ' + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Response data:', data);
-                    // Remover indicador de escritura
-                    const indicator = document.getElementById('typingIndicator');
-                    if (indicator) indicator.remove();
-
-                    // Agregar respuesta del asistente
-                    const responseDiv = document.createElement('div');
-                    responseDiv.style.marginBottom = '0.5rem';
-                    responseDiv.style.background = '#f5f5f5';
-                    responseDiv.style.padding = '0.5rem';
-                    responseDiv.style.borderRadius = '10px';
-
-                    let responseHtml = `<strong>Asistente:</strong> ${data.response.replace(/\n/g, '<br>')}`;
-
-                    responseDiv.innerHTML = responseHtml;
-                    messages.appendChild(responseDiv);
-
-                    messages.scrollTop = messages.scrollHeight;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Remover indicador de escritura
-                    const indicator = document.getElementById('typingIndicator');
-                    if (indicator) indicator.remove();
-
-                    messages.innerHTML += `<div style="margin-bottom: 0.5rem; background: #ffebee; padding: 0.5rem; border-radius: 10px;"><strong>Asistente:</strong> Lo siento, hubo un error al procesar tu consulta. Asegúrate de que el servidor esté corriendo.</div>`;
-                    messages.scrollTop = messages.scrollTop = messages.scrollHeight;
+            if (!response.ok) {
+                return response.json().then(err => {
+                    console.error('❌ Error response:', err);
+                    throw new Error(err.error || err.details || `HTTP ${response.status}`);
+                }).catch(() => {
+                    throw new Error(`HTTP error ${response.status}`);
                 });
-
-                input.value = '';
             }
+            return response.json();
+        })
+        .then(data => {
+            console.log('✅ Response data:', data);
+            
+            // Remove loading message
+            if (loadingMsg && loadingMsg.parentNode) {
+                loadingMsg.remove();
+            }
+            
+            if (data.success && data.response) {
+                // MEJORA: Convertir enlaces a target="_blank"
+                const responseWithTargetBlank = makeLinksOpenInNewTab(data.response);
+                addMessage(responseWithTargetBlank, 'bot', true);
+                
+                // Log tipo de conversación
+                if (data.conversation_type) {
+                    console.log('🎯 Tipo de conversación:', data.conversation_type);
+                }
+            } else if (data.response) {
+                const responseWithTargetBlank = makeLinksOpenInNewTab(data.response);
+                addMessage(responseWithTargetBlank, 'bot', true);
+            } else {
+                addMessage(
+                    '❌ Lo siento, no pude procesar tu consulta. Por favor, intenta reformular tu pregunta o sé más específico.',
+                    'bot'
+                );
+            }
+        })
+        .catch(error => {
+            console.error('❌ Error completo:', error);
+            
+            // Remove loading message
+            if (loadingMsg && loadingMsg.parentNode) {
+                loadingMsg.remove();
+            }
+            
+            addMessage(
+                `⚠️ Error de conexión: ${error.message}.\n\nPor favor verifica:\n• Que el servidor Flask esté corriendo en puerto 5000\n• Que Nginx esté configurado correctamente\n• Tu conexión a internet`,
+                'error'
+            );
+        })
+        .finally(() => {
+            // Re-enable controls
+            chatbotSend.disabled = false;
+            chatbotInput.disabled = false;
+            chatbotInput.focus();
+        });
+    }
+
+    // NUEVA FUNCIÓN: Hacer que los enlaces se abran en nueva pestaña
+    function makeLinksOpenInNewTab(html) {
+        // Crear un elemento temporal para parsear el HTML
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        
+        // Encontrar todos los enlaces y agregar target="_blank" y rel="noopener noreferrer"
+        const links = tempDiv.querySelectorAll('a');
+        links.forEach(link => {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+            
+            // Agregar icono visual para indicar que abre en nueva pestaña
+            if (!link.innerHTML.includes('🔗')) {
+                link.innerHTML += ' 🔗';
+            }
+        });
+        
+        return tempDiv.innerHTML;
+    }
+
+    // Add message to chat
+    function addMessage(text, type, isHtml = false) {
+        const messageDiv = document.createElement('div');
+        
+        if (type === 'loading') {
+            messageDiv.className = 'message loading';
+        } else if (type === 'error') {
+            messageDiv.className = 'message error-message';
+        } else if (type === 'user') {
+            messageDiv.className = 'message user-message';
+        } else {
+            messageDiv.className = 'message bot-message';
         }
+        
+        if (isHtml) {
+            messageDiv.innerHTML = text;
+        } else {
+            messageDiv.textContent = text;
+        }
+        
+        chatbotMessages.appendChild(messageDiv);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        
+        return messageDiv;
+    }
 
-        // Permitir Enter en el chatbot
-        document.getElementById('chatbotInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
+    // Send on button click
+    chatbotSend.addEventListener('click', function() {
+        console.log('🖱️ Click en botón enviar');
+        sendMessage();
+    });
 
-        // Permitir Enter en la búsqueda global
-        document.getElementById('globalSearch').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
+    // Send on Enter key
+    chatbotInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !chatbotSend.disabled) {
+            console.log('⌨️ Enter presionado');
+            sendMessage();
+        }
+    });
+
+    // Make chatbot draggable
+    let isDragging = false;
+    let dragOffset = { x: 0, y: 0 };
+
+    document.getElementById('chatbot-header').addEventListener('mousedown', function(e) {
+        if (e.target.id !== 'chatbot-close') {
+            isDragging = true;
+            dragOffset.x = e.clientX - chatbotContainer.offsetLeft;
+            dragOffset.y = e.clientY - chatbotContainer.offsetTop;
+        }
+    });
+
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            chatbotContainer.style.left = (e.clientX - dragOffset.x) + 'px';
+            chatbotContainer.style.top = (e.clientY - dragOffset.y) + 'px';
+            chatbotContainer.style.right = 'auto';
+            chatbotContainer.style.bottom = 'auto';
+        }
+    });
+
+    document.addEventListener('mouseup', function() {
+        isDragging = false;
+    });
+    
+    console.log('✅ Chatbot inicializado correctamente con todas las mejoras');
+});
     </script>
 </body>
 </html>

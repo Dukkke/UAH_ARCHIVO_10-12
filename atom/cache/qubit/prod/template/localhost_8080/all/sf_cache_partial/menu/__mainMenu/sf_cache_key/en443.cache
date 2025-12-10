@@ -1,0 +1,113 @@
+001763329098001763242698a:2:{s:7:"content";s:5227:"
+  
+    <div id="admin-menu" data-toggle="tooltip" data-title="Admin">
+
+      <button class="top-item" data-toggle="dropdown" data-target="#" aria-expanded="false">Admin</button>
+
+      <div class="top-dropdown-container">
+
+        <div class="top-dropdown-arrow">
+          <div class="arrow"></div>
+        </div>
+
+        <div class="top-dropdown-header">
+          <h2>Admin</h2>
+        </div>
+
+        <div class="top-dropdown-body">
+          <ul>
+            <li class="leaf" id="node_users"><a href="/index.php/user/list" title="Users">Users</a></li><li class="leaf" id="node_groups"><a href="/index.php/aclGroup/list" title="Groups">Groups</a></li><li class="leaf" id="node_staticPages"><a href="/index.php/staticpage/list" title="Static pages">Static pages</a></li><li class="leaf" id="node_menu"><a href="/index.php/menu/list" title="Menus">Menus</a></li><li class="leaf" id="node_plugins"><a href="/index.php/sfPluginAdminPlugin/plugins" title="Plugins">Plugins</a></li><li class="leaf" id="node_themes"><a href="/index.php/sfPluginAdminPlugin/themes" title="Themes">Themes</a></li><li class="leaf" id="node_settings"><a href="/index.php/settings/global" title="Settings">Settings</a></li><li class="leaf" id="node_descriptionUpdates"><a href="/index.php/search/descriptionUpdates" title="Description updates">Description updates</a></li><li class="leaf" id="node_globalReplace"><a href="/index.php/search/globalReplace" title="Global search/replace">Global search/replace</a></li><li class="leaf" id="node_visibleElements"><a href="/index.php/settings/visibleElements" title="Visible elements">Visible elements</a></li>          </ul>
+        </div>
+
+        <div class="top-dropdown-bottom"></div>
+
+      </div>
+
+    </div>
+
+  
+
+  
+    <div id="import-menu" data-toggle="tooltip" data-title="Import">
+
+      <button class="top-item" data-toggle="dropdown" data-target="#" aria-expanded="false">Import</button>
+
+      <div class="top-dropdown-container">
+
+        <div class="top-dropdown-arrow">
+          <div class="arrow"></div>
+        </div>
+
+        <div class="top-dropdown-header">
+          <h2>Import</h2>
+        </div>
+
+        <div class="top-dropdown-body">
+          <ul>
+            <li class="leaf" id="node_importXml"><a href="/index.php/object/importSelect?type=xml" title="XML">XML</a></li><li class="leaf" id="node_importCsv"><a href="/index.php/object/importSelect?type=csv" title="CSV">CSV</a></li><li class="leaf" id="node_importSkos"><a href="/index.php/sfSkosPlugin/import" title="SKOS">SKOS</a></li>          </ul>
+        </div>
+
+        <div class="top-dropdown-bottom"></div>
+
+      </div>
+
+    </div>
+
+  
+
+  
+    <div id="manage-menu" data-toggle="tooltip" data-title="Manage">
+
+      <button class="top-item" data-toggle="dropdown" data-target="#" aria-expanded="false">Manage</button>
+
+      <div class="top-dropdown-container">
+
+        <div class="top-dropdown-arrow">
+          <div class="arrow"></div>
+        </div>
+
+        <div class="top-dropdown-header">
+          <h2>Manage</h2>
+        </div>
+
+        <div class="top-dropdown-body">
+          <ul>
+            <li class="leaf" id="node_accessions"><a href="/index.php/accession/browse" title="Accessions">Accessions</a></li><li class="leaf" id="node_donors"><a href="/index.php/donor/browse" title="Donors">Donors</a></li><li class="leaf" id="node_jobs"><a href="/index.php/jobs/browse" title="Jobs">Jobs</a></li><li class="leaf" id="node_browsePhysicalObjects"><a href="/index.php/physicalobject/browse" title="Physical storage">Physical storage</a></li><li class="leaf" id="node_rightsholders"><a href="/index.php/rightsholder/browse" title="Rights holders">Rights holders</a></li><li class="leaf" id="node_taxonomies"><a href="/index.php/taxonomy/browse" title="Taxonomies">Taxonomies</a></li>          </ul>
+        </div>
+
+        <div class="top-dropdown-bottom"></div>
+
+      </div>
+
+    </div>
+
+  
+
+  
+    <div id="add-menu" data-toggle="tooltip" data-title="Add">
+
+      <button class="top-item" data-toggle="dropdown" data-target="#" aria-expanded="false">Add</button>
+
+      <div class="top-dropdown-container">
+
+        <div class="top-dropdown-arrow">
+          <div class="arrow"></div>
+        </div>
+
+        <div class="top-dropdown-header">
+          <h2>Add</h2>
+        </div>
+
+        <div class="top-dropdown-body">
+          <ul>
+            <li class="leaf" id="node_addAccessionRecord"><a href="/index.php/accession/add" title="Accession records">Accession records</a></li><li class="leaf" id="node_addInformationObject"><a href="/index.php/informationobject/add" title="Archival descriptions">Archival descriptions</a></li><li class="leaf" id="node_addActor"><a href="/index.php/actor/add" title="Authority records">Authority records</a></li><li class="leaf" id="node_addRepository"><a href="/index.php/repository/add" title="Archival institutions">Archival institutions</a></li><li class="leaf" id="node_addTerm"><a href="/index.php/term/add" title="Terms">Terms</a></li><li class="leaf" id="node_addFunction"><a href="/index.php/function/add" title="Function">Function</a></li>          </ul>
+        </div>
+
+        <div class="top-dropdown-bottom"></div>
+
+      </div>
+
+    </div>
+
+  
+";s:8:"response";C:16:"QubitWebResponse":432:{a:11:{i:0;s:0:"";i:1;i:200;i:2;s:2:"OK";i:3;a:5:{s:13:"http_protocol";s:8:"HTTP/1.1";s:7:"logging";s:0:"";s:7:"charset";s:5:"utf-8";s:17:"send_http_headers";b:1;s:12:"content_type";s:24:"text/html; charset=utf-8";}i:4;b:0;i:5;a:1:{s:12:"Content-Type";s:24:"text/html; charset=utf-8";}i:6;a:0:{}i:7;a:0:{}i:8;a:3:{s:5:"first";a:0:{}s:0:"";a:0:{}s:4:"last";a:0:{}}i:9;a:3:{s:5:"first";a:0:{}s:0:"";a:0:{}s:4:"last";a:0:{}}i:10;a:0:{}}}}

@@ -1,0 +1,2 @@
+Oct 21 12:48:20 symfony [crit] {PropelException} No connection information in your runtime configuration file for datasource [propel]
+Oct 21 12:48:20 symfony [crit] {PropelException} No connection information in your runtime configuration file for datasource [propel]

@@ -27,8 +27,12 @@ ENV FLASK_APP=api_chatbot.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
 # Comando para arrancar la aplicación
+<<<<<<< HEAD
 # Generar el índice de búsqueda durante la construcción
 RUN python create_search_index.py
 
 # Comando para arrancar la aplicación con Gunicorn para producción
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "api_chatbot:app", "--workers", "2", "--threads", "2", "--timeout", "120"]
+=======
+CMD ["python", "api_chatbot.py"]
+>>>>>>> 24413c4f7f7aeca6d6270891d1d0a8cc2e24cd09

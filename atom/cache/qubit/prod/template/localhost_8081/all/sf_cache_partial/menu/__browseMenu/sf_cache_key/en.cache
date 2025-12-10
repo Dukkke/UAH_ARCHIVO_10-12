@@ -1,0 +1,25 @@
+001764785703001764699303a:2:{s:7:"content";s:1461:"<div id="browse-menu">
+
+  <button class="top-item top-dropdown" data-toggle="dropdown" data-target="#" aria-expanded="false">Browse</button>
+
+  <div class="top-dropdown-container top-dropdown-container-right">
+
+    <div class="top-dropdown-arrow">
+      <div class="arrow"></div>
+    </div>
+
+    <div class="top-dropdown-header">
+      <h2>Browse</h2>
+    </div>
+
+    <div class="top-dropdown-body">
+      <ul>
+        <li class="leaf" id="node_browseInformationObjects"><a href="/index.php/informationobject/browse" title="Archival descriptions">Archival descriptions</a></li><li class="leaf" id="node_browseActors"><a href="/index.php/actor/browse" title="Authority records">Authority records</a></li><li class="leaf" id="node_browseRepositories"><a href="/index.php/repository/browse" title="Archival institutions">Archival institutions</a></li><li class="leaf" id="node_browseFunctions"><a href="/index.php/function/browse" title="Functions">Functions</a></li><li class="leaf" id="node_browseSubjects"><a href="/index.php/taxonomy/index/id/35" title="Subjects">Subjects</a></li><li class="leaf" id="node_browsePlaces"><a href="/index.php/taxonomy/index/id/42" title="Places">Places</a></li><li class="leaf" id="node_browseDigitalObjects"><a href="/index.php/informationobject/browse?view=card&amp;onlyMedia=1&amp;topLod=0" title="Digital objects">Digital objects</a></li>      </ul>
+    </div>
+
+    <div class="top-dropdown-bottom"></div>
+
+  </div>
+
+</div>
+";s:8:"response";C:16:"QubitWebResponse":432:{a:11:{i:0;s:0:"";i:1;i:200;i:2;s:2:"OK";i:3;a:5:{s:13:"http_protocol";s:8:"HTTP/1.1";s:7:"logging";s:0:"";s:7:"charset";s:5:"utf-8";s:17:"send_http_headers";b:1;s:12:"content_type";s:24:"text/html; charset=utf-8";}i:4;b:0;i:5;a:1:{s:12:"Content-Type";s:24:"text/html; charset=utf-8";}i:6;a:0:{}i:7;a:0:{}i:8;a:3:{s:5:"first";a:0:{}s:0:"";a:0:{}s:4:"last";a:0:{}}i:9;a:3:{s:5:"first";a:0:{}s:0:"";a:0:{}s:4:"last";a:0:{}}i:10;a:0:{}}}}

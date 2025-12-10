@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
   # --- 1. BASE DE DATOS (AtoM) ---
   db:
-    image: mariadb:10.5
+    image: percona:5.7
     container_name: atom_db
     restart: always
     environment:
@@ -13,14 +11,15 @@ services:
       MYSQL_PASSWORD: atom_pass
     volumes:
       - db_data:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
-  # --- 2. ELASTICSEARCH (Buscador de AtoM) ---
+  # --- 2. ELASTICSEARCH ---
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.16
     container_name: atom_es
     environment:
       - discovery.type=single-node
-      - ES_JAVA_OPTS=-Xms512m -Xmx512m # Bajé un poco la RAM para que no explote tu PC
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
       - xpack.security.enabled=false
       - xpack.ml.enabled=false
       - xpack.watcher.enabled=false
@@ -30,37 +29,61 @@ services:
     volumes:
       - es_data:/usr/share/elasticsearch/data
 
-  # --- 3. ATOM (El Archivo Real) ---
+  # --- 3. GEARMAN (requerido por AtoM) ---
+  gearman:
+    image: artefactual/gearmand:latest
+    container_name: atom_gearman
+    restart: always
+
+  # --- 4. ATOM 2.9 (PHP-FPM Backend) ---
   atom:
-    build: .  # Asume que hay un Dockerfile de AtoM en la raíz o ajusta la ruta
+    image: unillett/atom:latest
     container_name: atom_app
     restart: unless-stopped
-    ports:
-      - "8081:80" # <--- CAMBIO IMPORTANTE: AtoM ahora vive en el 8081
     depends_on:
       - db
       - elasticsearch
+      - gearman
     environment:
-      DATABASE_HOST: db
-      DATABASE_NAME: atom
-      DATABASE_USER: atom
-      DATABASE_PASSWORD: atom_pass
-      ES_HOST: elasticsearch
+      DB_HOST: "atom_db"
+      DB_NAME: "atom"
+      DB_USER: "atom"
+      DB_PASS: "atom_pass"
+      ES_HOST: "atom_es"
+      ES_PORT: "9200"
+      GEARMAND_HOST: "atom_gearman"
+      SITE_URL: "http://localhost:8081"
+      ADMIN_EMAIL: "admin@uah.cl"
+      ADMIN_PASS: "admin123"
     volumes:
-      - ./atom:/var/www/html
+      - atom_files:/usr/share/nginx/atom
+
+  # --- 5. NGINX para AtoM ---
+  atom_nginx:
+    image: nginx:alpine
+    container_name: atom_nginx
+    restart: always
+    ports:
+      - "8081:80"
+    volumes:
+      - ./docker/nginx/atom.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/chatbot-widget.js:/etc/nginx/chatbot-widget.js:ro
+      - atom_files:/usr/share/nginx/atom:ro
+    depends_on:
+      - atom
+      - chatbot_api
 
   # --- 4. TU CHATBOT (Backend Python) ---
   chatbot_api:
-    build: 
-      context: ./chatbot  # <--- Apunta a tu carpeta chatbot
+    build:
+      context: ./chatbot
       dockerfile: Dockerfile
-    container_name: uah_backend
+    container_name: Docker_Archivo
     ports:
       - "5000:5000"
     environment:
       - FLASK_ENV=development
-      # Tu API Key (idealmente usa un archivo .env, pero aquí funciona)
-      - GEMINI_API_KEY=AIzaSyCz0KmlpTJKuU5svI9uNlaU5ffVmgsELtk
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
     volumes:
       - ./chatbot:/app
 
@@ -70,11 +93,9 @@ services:
     container_name: uah_frontend
     restart: always
     ports:
-      - "8080:80" # <--- TU FRONTEND GANA EL PUERTO 8080
+      - "8080:80"
     volumes:
-      # Configuración de Nginx
       - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      # Tus archivos HTML/JS/CSS
       - ./html:/usr/share/nginx/html
     depends_on:
       - atom
@@ -83,3 +104,5 @@ services:
 volumes:
   db_data:
   es_data:
+  atom_uploads:
+  atom_files:

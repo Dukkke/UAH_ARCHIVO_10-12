@@ -1,0 +1,47 @@
+# Entorno virtual de Python
+/.venv
+venv/
+
+# Carpetas de cache de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de configuración de VSCode
+.vscode/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Entorno y cachés sensibles
+.env
+chatbot/.env
+*.pkl
+chatbot/embeddings_cache.pkl
+
+# Framework ATOM (Symfony)
+/atom/cache/*
+/atom/log/*
+/atom/temp/*
+# Ignorar tests profundos de Symfony que causan errores de ruta larga en Windows
+atom/symfony*/lib/plugins/*/test/
+atom/symfony*/test/
+atom/plugins/*/test/
+atom/vendor/
+node_modules/
+*.log
+
+# Archivos temporales
+*.tmp
+*.swp
+*~
+
+# Environment secrets
+.env
+chatbot/.env
+
+# Cache and generated data
+*.pkl
+chatbot/embeddings_cache.pkl
